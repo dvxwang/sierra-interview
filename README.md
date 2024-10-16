@@ -10,7 +10,8 @@
 
 1. Cd into "server"
 2. Run "npm install"
-3. Run "nodemon server"
+3. Create a .env file in the project root folder, and add in "OPENAI_API_KEY={YOUR_ACCESS_KEY}"
+4. Run "node server"
 
 # Test cases:
 
