@@ -11,7 +11,7 @@ app.use(express.json())
 app.post("/api", async (req, res) => {
     // Messages displayed in end user's chat
     const messages = req.body; 
-
+    console.log('Messages received: ', messages);
     // Detect the category of the request
     const category = await checkCategory(messages);
 
