@@ -11,7 +11,10 @@ app.use(express.json())
 app.post("/api", async (req, res) => {
     // Messages displayed in end user's chat
     const messages = req.body; 
+
+    // Testing/ debugging
     console.log('Messages received: ', messages);
+
     // Detect the category of the request
     const category = await checkCategory(messages);
 
@@ -48,6 +51,9 @@ app.post("/api", async (req, res) => {
 
     // Format the response into user-friendly format
     const modelMessage = formatModelResponse(category, messages, response);
+
+    // Testing/ debugging
+    console.log('Final response message: ', modelMessage);
     res.json({data: [...messages, modelMessage]});
 })
 
