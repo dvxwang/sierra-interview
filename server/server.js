@@ -1,12 +1,19 @@
 const express = require("express");
 
 const { checkCategory } = require("./actions/category.js");
+const cors = require("cors");
 const { fetchFromLLM } = require("./api.js");
 const { formatSystemInstructions, formatModelResponse } = require("./actions/formatters.js");
 const { NO_MATCH_MESSAGE, HUMAN_INTERVENTION_MESSAGE } = require("./consts.js");
 
+
 const app = express();
 app.use(express.json())
+app.use(cors({
+  origin: process.env.APP_URL,
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+}));
 
 app.post("/api", async (req, res) => {
     // Messages displayed in end user's chat

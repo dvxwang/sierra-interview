@@ -15,7 +15,7 @@ const ConversationTable = (props) => {
 
   const [conversation, setConversation] = useState(SEED);
 
-  const URL = "/api";
+  const URL = process.env.REACT_APP_API_URL + "/api";
 
   const fetchData = async (chat) => {
       try {
