@@ -1,7 +1,8 @@
 # sierra-interview
 
-# Try live demo here: https://main.d37m7zfmrherku.amplifyapp.com/
-# (Note: may take backend 30 sec to spin up if it's dormant)
+# Try live demo here: 
+https://main.d37m7zfmrherku.amplifyapp.com/
+(Note: may take backend 30 sec to spin up if it's dormant)
 
 # To run app:
 
