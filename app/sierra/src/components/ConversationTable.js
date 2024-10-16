@@ -14,8 +14,12 @@ const SEED = [
 const ConversationTable = (props) => {
 
   const [conversation, setConversation] = useState(SEED);
+  const [loading, setLoading] = useState(false);
 
-  const URL = process.env.REACT_APP_API_URL + "/api";
+  let URL = "/api";
+  if(process.env.REACT_APP_API_URL){
+    URL = process.env.REACT_APP_API_URL + URL;
+  }
 
   const fetchData = async (chat) => {
       try {
@@ -24,6 +28,7 @@ const ConversationTable = (props) => {
             content: chat
           }];
           setConversation(messages)
+          setLoading(true);
 
           const response = await fetch(URL, {
             method: 'POST',
@@ -37,7 +42,8 @@ const ConversationTable = (props) => {
               throw new Error('Network response was not ok');
           }
           const result = await response.json();
-          console.log('result?', result.data);
+
+          setLoading(false);
           setConversation(result.data);
       } catch (error) {
           console.error(error);
@@ -69,6 +75,7 @@ const ConversationTable = (props) => {
       <ChatInput 
         update={addChat}
       />
+      {loading ? <div>Loading...</div> : <div></div>}
     </Container>
   );
 }
